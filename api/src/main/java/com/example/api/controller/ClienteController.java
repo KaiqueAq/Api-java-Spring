@@ -19,9 +19,11 @@ public class ClienteController {
         return repository.findAll();
     }
 
-    @PostMapping
-    public ResponseEntity<ClienteEntity> salvar(@RequestBody ClienteEntity cliente) {
-        repository.save(cliente);
-        return ResponseEntity.created(null).body(cliente);
+     @PostMapping
+    public ResponseEntity<Map<String, Object>> salvar(@RequestBody FuncionarioEntity funcionario) {
+        repository.save(funcionario);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(Map.of("mensagem", "Funcionario salvo com sucesso!"));
     }
 }
